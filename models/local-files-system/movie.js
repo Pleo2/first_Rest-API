@@ -1,4 +1,4 @@
-import { readJson } from '../utils/utils.js'
+import { readJson } from '../../utils/utils.js'
 import { randomUUID } from 'node:crypto'
 
 const movies = await readJson('movies.json')
@@ -40,14 +40,14 @@ export class MovieModel {
     }
 
     static async update({ id, input }) {
-           const movieIndex = movies.findIndex(movie => movie.id === id)
-            if (movieIndex === -1) return false
+        const movieIndex = movies.findIndex(movie => movie.id === id)
+        if (movieIndex === -1) return false
 
-            movies[movieIndex] = {
+        movies[movieIndex] = {
             ...movies[movieIndex],
             ...input
-            }
+        }
 
-            return movies[movieIndex]
+        return movies[movieIndex]
     }
 }
