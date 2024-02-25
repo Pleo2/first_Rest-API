@@ -1,14 +1,10 @@
-import "dotenv/config"
-import pkg from 'pg'
-const { Pool } = pkg;
-
-const pg = new Pool()
+import pg from './pg.js'
 
 export class MovieModel {
     static async getAll({ genre }) {
         try {
             await pg.query('SELECT * FROM movie;')
-            console.log('database conected')
+
         } catch (error) {
             console.log(error)
         }
