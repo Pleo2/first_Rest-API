@@ -39,7 +39,14 @@ export class MovieModel {
         
     }
 
-    static async delete({ id }) {}
+    static async delete({ id }) {
+        const { rows: movie } = await pg.query(
+            'DELETE FROM movie WHERE id = $1;',
+            [id]
+        )
+            if (movie.length === 0) return null
+            return movie[0]
+    }
 
     static async update({ id, input }) {}
 }
